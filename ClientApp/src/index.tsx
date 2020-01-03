@@ -23,6 +23,12 @@ const initialState = {
   },
   alphabet: {
     text: 'абвгдежзиклмнопрстуфхцчшщыьэюя',
+  },
+  cryptedText: {
+    text: 'asdasd',
+  },
+  decryptedText: {
+    text: '',
   }
 }
 

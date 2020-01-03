@@ -12,7 +12,7 @@ type AlphabetInputProps = {
 
 class AlphabetInput extends Component<AlphabetInputProps> {
   state = {
-    alphabetText: '',
+    alphabetText: 'абвгдежзиклмнопрстуфхцчшщыьэюя',
   };
   render() {
     const {
@@ -28,14 +28,11 @@ class AlphabetInput extends Component<AlphabetInputProps> {
     return (
       <div className="alphabet-wrap">
         <Label for="alphabetInput">Your alphabet:</Label>
-        <Input id="alphabetInput" type="text" name="alphabet" onKeyUp={(e) => keyUpHandler(e)}></Input>
+        <Input id="alphabetInput" type="text" name="alphabet" defaultValue={this.state.alphabetText} onKeyUp={(e) => keyUpHandler(e)}></Input>
       </div>
     )
   }
 }
-
-
-
 
 export default connect(
   mapStateToProps,

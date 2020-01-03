@@ -26,7 +26,7 @@ export const reducer: Reducer < IAlphabetState > = (state: IAlphabetState | unde
     };
   }
   const action = incomingAction as IAlphabetAction;
-  if (action) {
+  if (action && action.type === 'ALPHABET_CHANGED') {
     return {
       text: action.text,
     }

@@ -8,6 +8,7 @@ import FetchData from './components/FetchData';
 
 import './custom.css'
 import { render } from 'react-dom';
+import DecryptPage from './components/DecryptPage';
 
 // export default () => (
 //     <Layout>
@@ -19,6 +20,6 @@ import { render } from 'react-dom';
 
 export default () => (
   <Layout>
-    <Route exact path="/" component={AlphabetInput} />
+    <Route exact path="/" component={DecryptPage} />
   </Layout>
 );
