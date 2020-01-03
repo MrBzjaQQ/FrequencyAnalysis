@@ -1,22 +1,20 @@
 import { Action, Reducer } from 'redux';
-import { AppThunkAction } from '..';
+import { AppThunkAction, ApplicationState } from '..';
 
 
 interface IAlphabetAction {
   type: 'ALPHABET_CHANGED';
-  text: String;
+  text: string;
 }
 
 export interface IAlphabetState {
-  text: String;
+  text: string;
 }
 
-export const mapStateToProps = (state: IAlphabetState) => ({
-	alphabet: state.text,
-});
+export const mapStateToProps = (state: ApplicationState) => state.alphabet;
 
 export const actionCreators = {
-  onTextChanged: (text: String) : AppThunkAction<IAlphabetAction> => (dispatch) => {
+  changeText: (text: string) : AppThunkAction<IAlphabetAction> => (dispatch) => {
     dispatch({type: 'ALPHABET_CHANGED', text});
   }
 }

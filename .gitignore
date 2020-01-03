@@ -11,6 +11,7 @@ Homestead.yaml
 /obj
 .cache
 .vscode
+/bin
 
 **.log
 

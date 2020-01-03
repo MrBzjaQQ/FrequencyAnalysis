@@ -1,39 +1,43 @@
 import React, { Component } from 'react';
-import { Input } from 'reactstrap';
-import { IAlphabetState, mapStateToProps, actionCreators } from '../store/alphabet/alphabetReducer';
+import { Input, Label } from 'reactstrap';
+import { IAlphabetState, mapStateToProps, actionCreators } from '../store/alphabet/alphabet';
 import { string } from 'prop-types';
 import { connect } from 'react-redux';
 import { HtmlAttributes } from 'csstype';
 
 type AlphabetInputProps = {
-  alphabet: string,
-  onTextChanged: Function,
+  text: string,
+  changeText: Function,
 }
 
 class AlphabetInput extends Component<AlphabetInputProps> {
-	render() {
-		const {
-      alphabet,
-      onTextChanged,
+  state = {
+    alphabetText: '',
+  };
+  render() {
+    const {
+      text,
+      changeText,
     } = this.props;
-    debugger;
     const keyUpHandler = (e: React.FormEvent<HTMLInputElement>) => {
-      debugger;
-      const text = e.currentTarget.value;
-      onTextChanged(text);
+      this.setState({
+        alphabetText: e.currentTarget.value,
+      });
+      changeText(e.currentTarget.value);
     }
-		return (
-			<div className="alphabet-wrap">
-				<Input type="text" name="alphabet" value={alphabet} onKeyUp={(e) => keyUpHandler(e)}></Input>
-			</div>
-		)
-	}
+    return (
+      <div className="alphabet-wrap">
+        <Label for="alphabetInput">Your alphabet:</Label>
+        <Input id="alphabetInput" type="text" name="alphabet" onKeyUp={(e) => keyUpHandler(e)}></Input>
+      </div>
+    )
+  }
 }
 
 
 
 
 export default connect(
-	mapStateToProps,
-	actionCreators,
+  mapStateToProps,
+  actionCreators,
 )(AlphabetInput as any);

@@ -13,15 +13,28 @@ import registerServiceWorker from './registerServiceWorker';
 const baseUrl = document.getElementsByTagName('base')[0].getAttribute('href') as string;
 const history = createBrowserHistory({ basename: baseUrl });
 
+const initialState = {
+  counter: {
+    count: 0,
+  },
+  weatherForecasts: {
+    isLoading: false,
+    forecasts: [],
+  },
+  alphabet: {
+    text: 'абвгдежзиклмнопрстуфхцчшщыьэюя',
+  }
+}
+
 // Get the application-wide store instance, prepopulating with state from the server where available.
-const store = configureStore(history);
+const store = configureStore(history, initialState);
 
 ReactDOM.render(
-    <Provider store={store}>
-        <ConnectedRouter history={history}>
-            <App />
-        </ConnectedRouter>
-    </Provider>,
-    document.getElementById('root'));
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <App />
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root'));
 
 registerServiceWorker();
